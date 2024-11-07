@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: test-codegen-nov624-one-gitops
+  description: This is GitOps manifest for test-codegen-nov624-one   
+  links:
+    - url: https://www.redhat.com/en/solutions/trusted-software-supply-chain
+      title: Trusted Secure Supply Chain 
+      icon: dashboard
+      type: admin-dashboard
+  annotations:    
+    argocd/app-name: test-codegen-nov624-one
+    janus-idp.io/tekton: test-codegen-nov624-one 
+    backstage.io/kubernetes-id: test-codegen-nov624-one 
+    backstage.io/techdocs-ref: dir:. 
+spec:
+  type: gitops
+  owner: user:guest 
+  lifecycle: experimental
+  dependsOn:
+    - component:test-codegen-nov624-one

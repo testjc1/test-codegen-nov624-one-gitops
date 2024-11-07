@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dsp-clone-job-test-codegen-nov624-one-gitops
+spec:  
+  template:         
+    metadata:
+      name: dsp-clone-job-test-codegen-nov624-one-gitops
+    spec:  
+      serviceAccountName: test-codegen-nov624-one-dsp-job
+      containers:
+      - name: initialize-dsp
+        image: quay.io/redhat-ai-dev/utils:latest
+        command:
+        - /bin/bash
+        - -c
+        - |
+          NS=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+          oc wait -l statefulset=test-codegen-nov624-one-notebook --for=condition=ready pod --timeout=300s
+          oc exec  StatefulSet/test-codegen-nov624-one-notebook -- git clone https://github.com/testjc1/test-codegen-nov624-one
+      restartPolicy: Never

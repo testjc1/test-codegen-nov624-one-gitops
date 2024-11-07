@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: test-codegen-nov624-one-model-server
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-codegen-nov624-one-model-server
+  name: test-codegen-nov624-one-model-server
+spec:
+  ports:
+  - port: 8001
+    protocol: TCP
+    targetPort: 8001
+  selector:
+    app.kubernetes.io/instance: test-codegen-nov624-one-model-server

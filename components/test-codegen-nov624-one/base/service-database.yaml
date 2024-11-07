@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: test-codegen-nov624-one-database
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-codegen-nov624-one-database 
+  name: test-codegen-nov624-one-database
+spec:
+  ports:
+  - port: 
+    protocol: TCP
+    targetPort: 
+  selector:
+    app.kubernetes.io/instance: test-codegen-nov624-one-database 
